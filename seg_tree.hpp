@@ -10,12 +10,13 @@
  * 🔄 TODO (for collaboration):
  * - Implement update() function
  * - Implement query() function  
- * - Add XOR, GCD operations (optional)
+ * - Add GCD operations (optional)
  * - Add range update with lazy propagation (advanced)
  */
 
 #include <vector>
 #include <string>
+#include <algorithm>
 
 template<typename T>
 class seg_tree
