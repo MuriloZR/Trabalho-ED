@@ -107,6 +107,31 @@ private:
             tree[node] = std::max(tree[2 * node], tree[2 * node + 1]);
         }
     }
+    void build_gcd(const std::vector<T> &arr, int node, int L, int R)
+    {
+        // Nó folha em L == R
+        if (L == R) {
+            tree[node] = arr[L];
+        }
+        else {
+
+            // Achar o elemento do meio para
+            // dividir o vetor em duas metades
+            int mid = (L + R) / 2;
+
+            // Percorrer a metade 
+            // à esquerda recursivamente
+            build_gcd(arr, 2 * node, L, mid);
+
+            // Percorrer a metade 
+            // à diretita recursivamente
+            build_gcd(arr, 2 * node + 1, mid + 1, R);
+
+            // Guardar a soma de ambas as
+            // crianças no nó pai
+            tree[node] = std::__gcd(tree[2 * node], tree[2 * node + 1]);
+        }
+    }
 public:
     segTree(const std::vector<T>& arr, TreeType type); //construtor da classe
     ~segTree();
@@ -122,13 +147,14 @@ segTree<T>::segTree(const std::vector<T>& arr, TreeType type) : type(type)
     if (type == sum) {
         build_sum(arr, 1, 0, arr.size() - 1);
     }
-    else if (type == min)
-    {
+    else if (type == min) {
         build_min(arr, 1, 0, arr.size() - 1);
     }
-    else if (type == max)
-    {
+    else if (type == max) {
         build_max(arr, 1, 0, arr.size() - 1);
+    }
+    else if (type == gcd) {
+        build_gcd(arr, 1, 0, arr.size() - 1);
     }
 }
 
