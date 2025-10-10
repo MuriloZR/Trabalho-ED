@@ -163,6 +163,29 @@ private:
             tree[node] = tree[node*2] + tree[node*2+1];
         }
     }
+    T query_sum(int node, int tl, int tr, int l, int r)
+    {
+
+        //retorna 0 se for pra
+        //fora dos limites
+        if (r < tl or tr < l) {
+            return 0;
+        }
+
+        // Se o no contém o range buscado
+        // retorna o valor desse no
+        if (l <= tl and tr <= r) {
+            return tree[node];
+        }
+
+        // Achar o elemento do meio para
+        // dividir o vetor em duas metades
+        int mid = (tl + tr) / 2;
+
+        // Percorre recursivamente direita e 
+        // esquerda e encontra o no
+        return query_sum(2 * node, tl, mid, l, r) + query_sum(2 * node + 1, mid + 1, tr, l, r);
+    }
 public:
     segTree(const std::vector<T>& arr, TreeType type); //construtor da classe
     ~segTree() = default;
@@ -194,14 +217,31 @@ void segTree<T>::update(int pos, T value)
     if (type == sum) {
         update_sum(1, 0, size-1, pos, value);
     }
+    else if (type == max) {
+        //TODO
+    }
+    else if (type == min) {
+        //TODO
+    }
+    else if (type == gcd) {
+        //TODO
+    }
+    
 }
 
 template <typename T>
 T segTree<T>::query(int left, int right)
 {
-    return T(); //retorna o dado buscado entre left e right
-}
-
-int main() {
-    return 0;
+    if (type == sum) {
+        return query_sum(1, 0, size-1, left, right);
+    }
+    else if (type == max) {
+        //TODO
+    }
+    else if (type == min) {
+        //TODO
+    }
+    else if (type == gcd) {
+        //TODO
+    }
 }
