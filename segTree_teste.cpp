@@ -5,7 +5,7 @@ int main() {
     //declara um vetor(necessário para poder construir a árvore)
     std::vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8 ,9};
     //declara uma árvore de soma de inteiros
-    segTree<int> tree_sum_int(v, sum);
+    segTree<int> tree_sum_int(v, SUM);
 
     //obtenção do somatório de todos os elementos do vetor
     //de duas formas diferentes, uma usando a função accumulate
