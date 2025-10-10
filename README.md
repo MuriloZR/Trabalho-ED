@@ -35,7 +35,7 @@ Implementação robusta e genérica de **Árvore de Segmentos (Segment Tree)** e
 ### Exemplo Básico
 
 ```cpp
-#include "seg_tree.cpp"
+#include "segTree.cpp"
 #include <vector>
 #include <iostream>
 
@@ -44,9 +44,9 @@ int main() {
     std::vector<int> arr = {1, 3, 5, 7, 9, 11};
     
     // Criando árvores de segmentos para diferentes operações
-    seg_tree<int> sum_tree(arr, "sum");    // Árvore de soma
-    seg_tree<int> min_tree(arr, "min");    // Árvore de mínimo
-    seg_tree<int> max_tree(arr, "max");    // Árvore de máximo
+    segTree<int> sum_tree(arr, "sum");    // Árvore de soma
+    segTree<int> min_tree(arr, "min");    // Árvore de mínimo
+    segTree<int> max_tree(arr, "max");    // Árvore de máximo
     
     // TODO: Exemplos de uso das funções query() e update()
     // quando estiverem implementadas
@@ -59,32 +59,29 @@ int main() {
 
 ```cpp
 // Inteiros
-seg_tree<int> tree_int(arr_int, "sum");
+segTree<int> tree_int(arr_int, "sum");
 
 // Long Long (para números grandes)
-seg_tree<long long> tree_ll(arr_ll, "sum");
+segTree<long long> tree_ll(arr_ll, "sum");
 
 // Ponto flutuante
-seg_tree<double> tree_double(arr_double, "min");
+segTree<double> tree_double(arr_double, "min");
 ```
 
-## 🏗️ Estrutura do Projeto
-
-```
-Trabalho-ED/
-├── seg_tree.cpp          # Implementação principal
-├── README.md             # Este arquivo
-└── examples/             # Exemplos de uso (futuro)
-```
+<!-- ## 🏗️ Estrutura do Projeto -->
+<!---->
+<!-- ``` -->
+<!-- Trabalho-ED/ -->
+<!-- ├── segTree.cpp          # Implementação principal -->
+<!-- ├── README.md             # Este arquivo -->
+<!-- └── examples/             # Exemplos de uso (futuro) -->
+<!-- ``` -->
 
 ## 🛠️ Compilação
 
 ```bash
 # Compilar exemplo básico
-g++ -std=c++17 -o exemplo exemplo.cpp
-
-# Com otimizações
-g++ -std=c++17 -O2 -o exemplo exemplo.cpp
+c++ -std=c++20 -o SegTree segTree.cpp
 ```
 
 ## 📊 Complexidade
@@ -118,7 +115,7 @@ Este é um projeto colaborativo! Para contribuir:
 
 - **Murilo Rosa**
 - **Lenno Rhoden**
-- **Leonardo Groos**
+- **Leonardo Groos Lago**
 
 ## 📚 Referências
 

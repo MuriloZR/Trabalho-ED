@@ -19,7 +19,7 @@
 #include <algorithm>
 
 template<typename T>
-class seg_tree
+class segTree
 {
 private:
     std::vector<T> tree;  // Vetor de tipo genérico T
@@ -27,15 +27,15 @@ private:
     void build_min(const std::vector<T>& arr,int node, int L, int R);
     void build_max(const std::vector<T>& arr,int node, int L, int R);
 public:
-    seg_tree(const std::vector<T>& arr, std::string tree_type); //construtor da classe
-    ~seg_tree();
+    segTree(const std::vector<T>& arr, std::string tree_type); //construtor da classe
+    ~segTree();
     
     void update(int pos, T value); //atualiza a arvore
     T query(int left, int right);
 };
 
 template<typename T>
-void seg_tree<T>::build_sum(const std::vector<T>& arr,int node, int L, int R)
+void segTree<T>::build_sum(const std::vector<T>& arr,int node, int L, int R)
 {
     // Leaf node where L == R
     if (L == R) {
@@ -62,7 +62,7 @@ void seg_tree<T>::build_sum(const std::vector<T>& arr,int node, int L, int R)
 }
 
 template <typename T>
-void seg_tree<T>::build_min(const std::vector<T> &arr, int node, int L, int R)
+void segTree<T>::build_min(const std::vector<T> &arr, int node, int L, int R)
 {
     // Leaf node where L == R
     if (L == R) {
@@ -89,7 +89,7 @@ void seg_tree<T>::build_min(const std::vector<T> &arr, int node, int L, int R)
 }
 
 template <typename T>
-void seg_tree<T>::build_max(const std::vector<T> &arr, int node, int L, int R)
+void segTree<T>::build_max(const std::vector<T> &arr, int node, int L, int R)
 {
     // Leaf node where L == R
     if (L == R) {
@@ -115,7 +115,7 @@ void seg_tree<T>::build_max(const std::vector<T> &arr, int node, int L, int R)
 }
 
 template<typename T>
-seg_tree<T>::seg_tree(const std::vector<T>& arr, std::string tree_type)
+segTree<T>::segTree(const std::vector<T>& arr, std::string tree_type)
 {
     tree.resize(4 * arr.size());
     if (tree_type == "soma" || tree_type == "sum") {
@@ -132,19 +132,19 @@ seg_tree<T>::seg_tree(const std::vector<T>& arr, std::string tree_type)
 }
 
 template<typename T>
-seg_tree<T>::~seg_tree()
+segTree<T>::~segTree()
 {
     // Destrutor (vector se limpa automaticamente)
 }
 
 template <typename T>
-void seg_tree<T>::update(int pos, T value)
+void segTree<T>::update(int pos, T value)
 {
     //atualizar a árvore aqui
 }
 
 template <typename T>
-T seg_tree<T>::query(int left, int right)
+T segTree<T>::query(int left, int right)
 {
     return T(); //retorna o dado buscado entre left e right
 }
