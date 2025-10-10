@@ -35,7 +35,7 @@ Implementação robusta e genérica de **Árvore de Segmentos (Segment Tree)** e
 ### Exemplo Básico
 
 ```cpp
-#include "segTree.cpp"
+#include "segTree.hpp"
 #include <vector>
 #include <iostream>
 
@@ -44,9 +44,9 @@ int main() {
     std::vector<int> arr = {1, 3, 5, 7, 9, 11};
     
     // Criando árvores de segmentos para diferentes operações
-    segTree<int> sum_tree(arr, "sum");    // Árvore de soma
-    segTree<int> min_tree(arr, "min");    // Árvore de mínimo
-    segTree<int> max_tree(arr, "max");    // Árvore de máximo
+    segTree<int> sum_tree(arr, sum);    // Árvore de soma
+    segTree<int> min_tree(arr, min);    // Árvore de mínimo
+    segTree<int> max_tree(arr, max);    // Árvore de máximo
     
     // TODO: Exemplos de uso das funções query() e update()
     // quando estiverem implementadas
@@ -59,13 +59,13 @@ int main() {
 
 ```cpp
 // Inteiros
-segTree<int> tree_int(arr_int, "sum");
+segTree<int> tree_int(arr_int, sum);
 
 // Long Long (para números grandes)
-segTree<long long> tree_ll(arr_ll, "sum");
+segTree<long long> tree_ll(arr_ll, sum);
 
 // Ponto flutuante
-segTree<double> tree_double(arr_double, "min");
+segTree<double> tree_double(arr_double, min);
 ```
 
 <!-- ## 🏗️ Estrutura do Projeto -->
@@ -111,12 +111,6 @@ Este é um projeto colaborativo! Para contribuir:
 - **Criar testes**: Casos de teste para validar implementação
 - **Documentação**: Melhorar comentários e exemplos
 
-## 👥 Equipe
-
-- **Murilo Rosa**
-- **Lenno Rhoden**
-- **Leonardo Groos Lago**
-
 ## 📚 Referências
 
 - [Segment Tree - CP-Algorithms](https://cp-algorithms.com/data_structures/segment_tree.html)
@@ -124,4 +118,4 @@ Este é um projeto colaborativo! Para contribuir:
 
 ---
 
-**📌 Status**: Em desenvolvimento ativo | **🎓 Disciplina**: Estruturas de Dados | **🏫 Universidade**: Universidade Federal de Santa Maria (UFSM)
+**📌 Status**: Em desenvolvimento | **🎓 Disciplina**: Estruturas de Dados | **🏫 Universidade**: Universidade Federal de Santa Maria (UFSM)
