@@ -37,26 +37,27 @@ public:
 template<typename T>
 void segTree<T>::build_sum(const std::vector<T>& arr,int node, int L, int R)
 {
-    // Leaf node where L == R
+    // Nó folha em L == R
     if (L == R) {
         tree[node] = arr[L];
     }
     else {
 
-        // Find the middle element to
-        // split the array into two halves
+        // Achar o elemento do meio para
+        // dividir o vetor em duas metades
         int mid = (L + R) / 2;
 
-        // Recursively travel the
-        // left half
+    
+        // Percorrer a metade 
+        // à esquerda recursivamente
         build_sum(arr, 2 * node, L, mid);
 
-        // Recursively travel the
-        // right half
+        // Percorrer a metade
+        // à direita recursivamente
         build_sum(arr, 2 * node + 1, mid + 1, R);
 
-        // Storing the sum of both the
-        // children into the parent
+        // Guardar a soma de ambas as
+        // crianças no nó pai
         tree[node] = tree[2 * node] + tree[2 * node + 1];
     }
 }
@@ -64,26 +65,26 @@ void segTree<T>::build_sum(const std::vector<T>& arr,int node, int L, int R)
 template <typename T>
 void segTree<T>::build_min(const std::vector<T> &arr, int node, int L, int R)
 {
-    // Leaf node where L == R
+    // Nó folha em L == R
     if (L == R) {
         tree[node] = arr[L];
     }
     else {
 
-        // Find the middle element to
-        // split the array into two halves
+        // Achar o elemento do meio para
+        // dividir o vetor em duas metades
         int mid = (L + R) / 2;
 
-        // Recursively travel the
-        // left half
+        // Percorrer a metade 
+        // à esquerda recursivamente
         build_min(arr, 2 * node, L, mid);
 
-        // Recursively travel the
-        // right half
+        // Percorrer a metade 
+        // à direita recursivamente
         build_min(arr, 2 * node + 1, mid + 1, R);
 
-        // Storing the sum of both the
-        // children into the parent
+        // Guardar a soma de ambas as
+        // crianças no nó pai
         tree[node] = std::min(tree[2 * node], tree[2 * node + 1]);
     }
 }
@@ -91,25 +92,26 @@ void segTree<T>::build_min(const std::vector<T> &arr, int node, int L, int R)
 template <typename T>
 void segTree<T>::build_max(const std::vector<T> &arr, int node, int L, int R)
 {
-    // Leaf node where L == R
+    // Nó folha em L == R
     if (L == R) {
         tree[node] = arr[L];
     }
     else {
 
-        //encontra o meio da parte analisada do array
+        // Achar o elemento do meio para
+        // dividir o vetor em duas metades
         int mid = (L + R) / 2;
 
-        // Recursively travel the
-        // left half
+        // Percorrer a metade 
+        // à esquerda recursivamente
         build_max(arr, 2 * node, L, mid);
 
-        // Recursively travel the
-        // right half
+        // Percorrer a metade 
+        // à diretita recursivamente
         build_max(arr, 2 * node + 1, mid + 1, R);
 
-        // Storing the sum of both the
-        // children into the parent
+        // Guardar a soma de ambas as
+        // crianças no nó pai
         tree[node] = std::max(tree[2 * node], tree[2 * node + 1]);
     }
 }
