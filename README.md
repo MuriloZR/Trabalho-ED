@@ -124,7 +124,6 @@ Este é um projeto colaborativo! Para contribuir:
 
 - [Segment Tree - CP-Algorithms](https://cp-algorithms.com/data_structures/segment_tree.html)
 - [Introduction to Data Structures](https://www.geeksforgeeks.org/segment-tree-data-structure/)
-- Cormen, T. H. et al. Introduction to Algorithms, 3rd Edition
 
 ---
 
