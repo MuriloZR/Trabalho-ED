@@ -18,10 +18,18 @@
 #include <string>
 #include <algorithm>
 
+enum TreeType {
+    sum,
+    max,
+    min,
+    gcd
+};
+
 template<typename T>
 class segTree
 {
 private:
+    TreeType type;
     std::vector<T> tree;  // Vetor de tipo genérico T
     void segTree<T>::build_sum(const std::vector<T>& arr,int node, int L, int R)
     {
@@ -81,26 +89,26 @@ private:
             tree[node] = arr[L];
         }
         else {
-        
+
             // Achar o elemento do meio para
             // dividir o vetor em duas metades
             int mid = (L + R) / 2;
-        
+
             // Percorrer a metade 
             // à esquerda recursivamente
             build_max(arr, 2 * node, L, mid);
-        
+
             // Percorrer a metade 
             // à diretita recursivamente
             build_max(arr, 2 * node + 1, mid + 1, R);
-        
+
             // Guardar a soma de ambas as
             // crianças no nó pai
             tree[node] = std::max(tree[2 * node], tree[2 * node + 1]);
         }
     }
 public:
-    segTree(const std::vector<T>& arr, std::string tree_type); //construtor da classe
+    segTree(const std::vector<T>& arr, TreeType type); //construtor da classe
     ~segTree();
     
     void update(int pos, T value); //atualiza a arvore
@@ -108,17 +116,17 @@ public:
 };
 
 template<typename T>
-segTree<T>::segTree(const std::vector<T>& arr, std::string tree_type)
+segTree<T>::segTree(const std::vector<T>& arr, TreeType type) : type(type)
 {
     tree.resize(4 * arr.size());
-    if (tree_type == "soma" || tree_type == "sum") {
+    if (type == sum) {
         build_sum(arr, 1, 0, arr.size() - 1);
     }
-    else if (tree_type == "min")
+    else if (type == min)
     {
         build_min(arr, 1, 0, arr.size() - 1);
     }
-    else if (tree_type == "max")
+    else if (type == max)
     {
         build_max(arr, 1, 0, arr.size() - 1);
     }
