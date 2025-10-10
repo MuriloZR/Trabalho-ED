@@ -5,13 +5,12 @@ template<typename T>
 class seg_tree
 {
 private:
-    int size;
     std::vector<T> tree;  // Vetor de tipo genérico T
 public:
-    seg_tree(const std::vector<T>& arr);
+    seg_tree(const std::vector<T>& arr); //construtor da classe
     ~seg_tree();
     
-    void update(int pos, T value);
+    void update(int pos, T value); //atualiza a arvore
     T query(int left, int right);
 };
 
@@ -37,5 +36,5 @@ void seg_tree<T>::update(int pos, T value)
 template <typename T>
 T seg_tree<T>::query(int left, int right)
 {
-    return T(); //retorna o dado bescado entre left e right
+    return T(); //retorna o dado buscado entre left e right
 }
