@@ -11,7 +11,7 @@ Implementação robusta e genérica de **Árvore de Segmentos (Segment Tree)** e
 
 - 🎯 **Template Genérico**: Funciona com `int`, `long long`, `double`, etc.
 - ⚡ **Alta Performance**: Complexidade O(log n) para consultas e atualizações
-- 🔧 **Operações Múltiplas**: Soma, Mínimo, Máximo (com possibilidade de extensão)
+- 🔧 **Operações Múltiplas**: Soma, Mínimo, Máximo, Maior divisor comum (com possibilidade de extensão)
 - 📚 **Código Educativo**: Bem comentado e estruturado para aprendizado
 - 🤝 **Colaborativo**: Desenvolvido em equipe para disciplina de Estruturas de Dados
 
@@ -23,10 +23,10 @@ Implementação robusta e genérica de **Árvore de Segmentos (Segment Tree)** e
 - [x] Operação de **Mínimo** (Range Minimum Query)
 - [x] Operação de **Máximo** (Range Maximum Query)
 - [x] Construção da árvore O(n)
+- [x] Função `update()` - Atualização de elementos
+- [x] Função `query()` - Consultas por intervalo
 
 ### 🔄 Em Desenvolvimento
-- [ ] Função `update()` - Atualização de elementos
-- [ ] Função `query()` - Consultas por intervalo
 - [ ] Lazy Propagation (para atualizações em intervalo)
 - [ ] Testes unitários
 
@@ -44,12 +44,18 @@ int main() {
     std::vector<int> arr = {1, 3, 5, 7, 9, 11};
     
     // Criando árvores de segmentos para diferentes operações
-    segTree<int> sum_tree(arr, sum);    // Árvore de soma
-    segTree<int> min_tree(arr, min);    // Árvore de mínimo
-    segTree<int> max_tree(arr, max);    // Árvore de máximo
+    segTree<int> sum_tree(arr, SUM);    // Árvore de soma
+    segTree<int> max_tree(arr, MAX);    // Árvore de máximo
+    segTree<int> min_tree(arr, MIN);    // Árvore de mínimo
+    segTree<int> gcd_tree(arr, GCD);    // Árvore de maior divisor comum
     
-    // TODO: Exemplos de uso das funções query() e update()
-    // quando estiverem implementadas
+    // os parâmetros da função query são o intervalo que quer se buscar
+    // exemplo: a soma total é do arr[0] até arr[size - 1]
+    // a soma de arr[0] até arr[3] seria sum_tree.query(0, 3);
+    int soma = sum_tree.query(0, arr.size() - 1);
+    int maior = max_tree.query(0, arr.size() - 1);
+    int menor = min_tree.query(0, arr.size() - 1);
+    int mdc = gcd_tree.query(0, arr.size() - 1);
     
     return 0;
 }
@@ -66,22 +72,13 @@ segTree<long long> tree_ll(arr_ll, sum);
 
 // Ponto flutuante
 segTree<double> tree_double(arr_double, min);
+
 ```
-
-<!-- ## 🏗️ Estrutura do Projeto -->
-<!---->
-<!-- ``` -->
-<!-- Trabalho-ED/ -->
-<!-- ├── segTree.cpp          # Implementação principal -->
-<!-- ├── README.md             # Este arquivo -->
-<!-- └── examples/             # Exemplos de uso (futuro) -->
-<!-- ``` -->
-
 ## 🛠️ Compilação
 
 ```bash
 # Compilar exemplo básico
-c++ -std=c++20 -o SegTree segTree.cpp
+c++ -std=c++20 -o SegTree segTree_teste.cpp
 ```
 
 ## 📊 Complexidade
@@ -93,24 +90,6 @@ c++ -std=c++20 -o SegTree segTree.cpp
 | Atualização | O(log n) | Update de um elemento |
 | Espaço | O(4n) | Espaço necessário para a árvore |
 
-## 🤝 Como Contribuir
-
-Este é um projeto colaborativo! Para contribuir:
-
-1. **Fork** o repositório
-2. **Clone** para sua máquina local
-3. **Crie uma branch** para sua feature: `git checkout -b feature/nova-funcionalidade`
-4. **Commit** suas mudanças: `git commit -m 'Adiciona nova funcionalidade'`
-5. **Push** para a branch: `git push origin feature/nova-funcionalidade`
-6. Abra um **Pull Request**
-
-### 🎯 Tarefas Disponíveis
-
-- **Implementar função `update()`**: Atualização de elementos individuais
-- **Implementar função `query()`**: Consultas por intervalo
-- **Criar testes**: Casos de teste para validar implementação
-- **Documentação**: Melhorar comentários e exemplos
-
 ## 📚 Referências
 
 - [Segment Tree - CP-Algorithms](https://cp-algorithms.com/data_structures/segment_tree.html)
@@ -118,4 +97,4 @@ Este é um projeto colaborativo! Para contribuir:
 
 ---
 
-**📌 Status**: Em desenvolvimento | **🎓 Disciplina**: Estruturas de Dados | **🏫 Universidade**: Universidade Federal de Santa Maria (UFSM)
+**🎓 Disciplina**: Estruturas de Dados | **🏫 Universidade**: Universidade Federal de Santa Maria (UFSM)
