@@ -32,7 +32,7 @@ private:
     int size; //tamanho do vetor usado pra construir a árvore
     std::vector<T> tree;  // Vetor de tipo genérico T
     
-    T armazenar(T a, T b) {
+    T operacao(T a, T b) {
       switch (type) {
         case SUM: return a + b;
         case MAX: return std::max(a, b);
@@ -64,11 +64,11 @@ private:
 
             // Guardar a soma de ambas as
             // crianças no nó pai
-            tree[node] = armazenar(tree[2 * node], tree[2 * node + 1]);
+            tree[node] = operacao(tree[2 * node], tree[2 * node + 1]);
         }
     }
 
-    void update_sum(int node, int L, int R, int pos, T new_val) {
+    void _update(int node, int L, int R, int pos, T new_val) {
         if (L == R) {
             tree[node] = new_val;
         }
@@ -83,17 +83,17 @@ private:
             if (pos <= mid) {
                 // Percorre recursivamente 
                 // a metade à esquerda
-                update_sum(node*2, L, mid, pos, new_val);
+                _update(node*2, L, mid, pos, new_val);
             }
             else {
                 // Percorre recursivamente 
                 // a metade à direita
-                update_sum(node*2+1, mid+1, R, pos, new_val);
+                _update(node*2+1, mid+1, R, pos, new_val);
             }
-            tree[node] = tree[node*2] + tree[node*2+1];
+            tree[node] = operacao(tree[node*2], tree[node*2+1]);
         }
     }
-    T query_sum(int node, int tl, int tr, int l, int r)
+    T _query_sum(int node, int tl, int tr, int l, int r)
     {
 
         //retorna 0 se for pra
@@ -114,48 +114,20 @@ private:
 
         // Percorre recursivamente direita e 
         // esquerda e encontra o no
-        return query_sum(2 * node, tl, mid, l, r) + query_sum(2 * node + 1, mid + 1, tr, l, r);
+        return operacao(_query_sum(2 * node + 1, mid + 1, tr, l, r), _query_sum(2 * node + 1, mid + 1, tr, l, r));
     }
 public:
     segTree(const std::vector<T>& arr, TreeType type) : type(type), size(arr.size()), tree(4 * arr.size()){
       build(arr, 1, 0, size - 1);
     }; //construtor da classe
+
     ~segTree() = default;
-    void update(int pos, T value); //atualiza a arvore
-    T query(int left, int right);
-};
 
-template <typename T>
-void segTree<T>::update(int pos, T value)
-{
-    if (type == SUM) {
-        update_sum(1, 0, size-1, pos, value);
-    }
-    else if (type == MAX) {
-        //TODO
-    }
-    else if (type == MIN) {
-        //TODO
-    }
-    else if (type == GCD) {
-        //TODO
-    }
+    void update(int pos, T value) {
+        _update(1, 0, size-1, pos, value);
+    }; //atualiza a arvore
     
-}
-
-template <typename T>
-T segTree<T>::query(int left, int right)
-{
-    if (type == SUM) {
-        return query_sum(1, 0, size-1, left, right);
-    }
-    else if (type == MAX) {
-        //TODO
-    }
-    else if (type == MIN) {
-        //TODO
-    }
-    else if (type == GCD) {
-        //TODO
-    }
-}
+    T query(int left, int right) {
+        return _query_sum(1, 0, size-1, left, right);
+    }; //retorna a consulta entre left e right
+};
