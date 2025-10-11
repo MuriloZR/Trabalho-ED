@@ -16,6 +16,7 @@
 #include <vector>
 #include <algorithm>
 #include <numeric>
+#include <limits>
 
 enum TreeType {
     SUM,
@@ -38,6 +39,15 @@ private:
         case MAX: return std::max(a, b);
         case MIN: return std::min(a, b);
         case GCD: return std::gcd(a, b);
+      }
+    }
+
+    T valorPadrao() {
+      switch (type) {
+        case SUM: return 0;
+        case MAX: return std::numeric_limits<T>::lowest();
+        case MIN: return std::numeric_limits<T>::max();
+        case GCD: return 0;
       }
     }
 
@@ -93,13 +103,13 @@ private:
             tree[node] = operacao(tree[node*2], tree[node*2+1]);
         }
     }
-    T _query_sum(int node, int tl, int tr, int l, int r)
+    T _query(int node, int tl, int tr, int l, int r)
     {
 
         //retorna 0 se for pra
         //fora dos limites
         if (r < tl or tr < l) {
-            return 0;
+            return valorPadrao();
         }
 
         // Se o no contém o range buscado
@@ -114,7 +124,7 @@ private:
 
         // Percorre recursivamente direita e 
         // esquerda e encontra o no
-        return operacao(_query_sum(2 * node + 1, mid + 1, tr, l, r), _query_sum(2 * node + 1, mid + 1, tr, l, r));
+        return operacao(_query(2 * node, tl, mid, l, r), _query(2 * node + 1, mid + 1, tr, l, r));
     }
 public:
     segTree(const std::vector<T>& arr, TreeType type) : type(type), size(arr.size()), tree(4 * arr.size()){
@@ -128,6 +138,6 @@ public:
     }; //atualiza a arvore
     
     T query(int left, int right) {
-        return _query_sum(1, 0, size-1, left, right);
+        return _query(1, 0, size-1, left, right);
     }; //retorna a consulta entre left e right
 };
