@@ -99,17 +99,17 @@ o próximo número maior que N que é potência de 2, isso pode levar a um núme
 maior que o necessário. Ao usar um tamanho de 4N, é garantido que haverá espaço
 suficiente para todos os nós, mesmo se N não for uma potência de 2.
 Cálculo da potência de 2 maior que N: $\lfloor \log _{2}\left(N\right) \rfloor + 1$
-Cálculo matemático:
-$4N > 2(\lfloor \log _{2}\left(N\right) \rfloor + 1) - 1$
-$2N > \lfloor \log _{2}\left(N\right) \rfloor + 1 - 1$
-$2N > \lfloor \log _{2}\left(N\right) \rfloor$ Isso é verdade?
-Prova por indução:
-A desigualdade pode ser provada mostrando que $n < 2^n \forall n \ge 1 \in \mathbb{N}$
-n = 1, $1 < 2^1$
-Assumimos que a inequação é verdadeira para algum $k \in \mathbb{N}$, $k < 2^k$
-$k+1 < 2^(k+1)$
-$\forall k \ge 1, 2k \ge k+1$
-$k+1 \le 2k < 2^(k+1)$
+Cálculo matemático:  
+$4N > 2(\lfloor \log _{2}\left(N\right) \rfloor + 1) - 1$  
+$2N > \lfloor \log _{2}\left(N\right) \rfloor + 1 - 1$  
+$2N > \lfloor \log _{2}\left(N\right) \rfloor$ Isso é verdade?  
+Prova por indução:  
+A desigualdade pode ser provada mostrando que $n < 2^n \forall n \ge 1 \in \mathbb{N}$  
+n = 1, $1 < 2^1$  
+Assumimos que a inequação é verdadeira para algum $k \in \mathbb{N}$, $k < 2^k$  
+$k+1 < 2^(k+1)$  
+$\forall k \ge 1, 2k \ge k+1$  
+$k+1 \le 2k < 2^(k+1)$  
 Como o logaritmo é a função inversa da exponenciação, $2N > \lfloor \log _{2}\left(N\right) \rfloor \forall N \ge 1$
 
 ## 📚 Referências
