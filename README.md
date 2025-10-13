@@ -98,7 +98,7 @@ Se N não for uma potência de 2, o número de nós folha na Segment Tree será
 o próximo número maior que N que é potência de 2, isso pode levar a um número de nós
 maior que o necessário. Ao usar um tamanho de 4N, é garantido que haverá espaço
 suficiente para todos os nós, mesmo se N não for uma potência de 2.  
-Cálculo da potência de 2 maior que N: $\lfloor \log _{2}\left(N\right) \rfloor + 1$
+Cálculo da potência de 2 maior que N: $\lfloor \log _{2}\left(N\right) \rfloor + 1$  
 Cálculo matemático:  
 $4N > 2(\lfloor \log _{2}\left(N\right) \rfloor + 1) - 1$  
 $2N > \lfloor \log _{2}\left(N\right) \rfloor + 1 - 1$  
