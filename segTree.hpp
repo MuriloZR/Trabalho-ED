@@ -5,11 +5,11 @@
  * - Sum, Min, Max operations
  * - Generic template for any data type
  * - Build functions for all three operations
- * 
- * 🔄 TODO (for collaboration):
  * - Implement update() function
  * - Implement query() function  
  * - Add GCD operations (optional)
+ * 
+ * 🔄 TODO (for collaboration):
  * - Add range update with lazy propagation (advanced)
  */
 
