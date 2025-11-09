@@ -22,7 +22,8 @@ enum TreeType {
     SUM,
     MAX,
     MIN,
-    GCD 
+    GCD,
+    XOR
 };
 
 template<typename T>
@@ -48,6 +49,7 @@ private:
         case MAX: return std::max(a, b);
         case MIN: return std::min(a, b);
         case GCD: return std::gcd(a, b);
+        case XOR: return a ^ b;
       }
 
       return T();
@@ -59,6 +61,7 @@ private:
         case MAX: return std::numeric_limits<T>::lowest();
         case MIN: return std::numeric_limits<T>::max();
         case GCD: return 0;
+        case XOR: return 0;
       }
 
       return T();

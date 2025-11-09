@@ -8,7 +8,8 @@ int main() {
   int n, m;
   std::cin >> n >> m;
   std::vector<int> a(n);
-  for (auto &i : a) std::cin >> i;
+  for (auto &i : a)
+    std::cin >> i;
 
   segTree<int> segMax(a, MAX);
 
@@ -25,7 +26,8 @@ int main() {
     c.push_back(segMin.query(i, i + m - 1));
 
   for (int i = 0; i < c.size(); i++) {
-    if (i) std::cout << ' ';
+    if (i)
+      std::cout << ' ';
     std::cout << c[i];
   }
   std::cout << '\n';
