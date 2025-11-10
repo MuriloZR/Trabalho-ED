@@ -1,18 +1,3 @@
-/*
- * Segment Tree Implementation - Generic Template
- * 
- * ✅ IMPLEMENTED:
- * - Sum, Min, Max operations
- * - Generic template for any data type
- * - Build functions for all three operations
- * - Implement update() function
- * - Implement query() function  
- * - Add GCD operations (optional)
- * 
- * 🔄 TODO (for collaboration):
- * - Add range update with lazy propagation (advanced)
- */
-
 #include <vector>
 #include <algorithm>
 #include <numeric>
@@ -320,3 +305,29 @@ public:
         _range_update_assign(1, 0, size-1, left, right, value);
     }; //atribui 'value' a todos os elementos no intervalo [left, right]
 };
+
+#include <bits/stdc++.h>
+
+
+int main() {
+    using namespace std;
+
+    int n, q; cin >> n >> q;
+    vector<unsigned long long> v(n);
+    for (auto& i : v) cin >> i;
+    segTree<unsigned long long> tree(v, SUM);
+    while (q--) {
+        int c;
+        cin >> c;
+        if (c == 1) {
+            int a, b, c;
+            cin >> a >> b >> c;
+            tree.rangeAdd(a-1, b-1, c);
+        }
+        else {
+            int k; cin >> k;
+            cout << tree.query(k-1, k-1) << endl;
+        }
+    }
+
+}
