@@ -18,7 +18,7 @@ int main() {
     int op, l, r;
     std::cin >> op >> l >> r;
     if (op == 1)
-      tree.update(l-1, r);
+      tree.assign(l-1, r);
     else
       std::cout << tree.query(l-1, r-1) << '\n'; 
   }
