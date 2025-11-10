@@ -1,18 +1,3 @@
-/*
- * Segment Tree Implementation - Generic Template
- * 
- * ✅ IMPLEMENTED:
- * - Sum, Min, Max operations
- * - Generic template for any data type
- * - Build functions for all three operations
- * - Implement update() function
- * - Implement query() function  
- * - Add GCD operations (optional)
- * 
- * 🔄 TODO (for collaboration):
- * - Add range update with lazy propagation (advanced)
- */
-
 #include <vector>
 #include <algorithm>
 #include <numeric>
@@ -178,6 +163,8 @@ private:
     //daqui pra baixo tem os negocios de lazy propagation
     //não sei se eles vão estar funcionando, esse negócio
     //é uma loucura
+
+    //tão funcionando
 
     void push_assign(int node, int L, int R) {
         if (marked[node]) {

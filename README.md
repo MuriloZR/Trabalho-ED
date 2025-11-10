@@ -1,23 +1,23 @@
-# 🌳 Segment Tree - Generic Implementation
+# Segment Tree - Generic Implementation
 
 ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
 ![Status](https://img.shields.io/badge/status-in%20development-yellow.svg?style=for-the-badge)
 
-## 📋 Sobre o Projeto
+## Sobre o Projeto
 
-Implementação robusta e genérica de **Árvore de Segmentos (Segment Tree)** em C++ usando templates, permitindo operações eficientes em qualquer tipo de dados numérico.
+Implementação genérica de **Árvore de Segmentos (Segment Tree)** em C++ usando templates, permitindo operações eficientes em qualquer tipo de dados numérico.
 
-### ✨ Características
+### Características
 
-- 🎯 **Template Genérico**: Funciona com `int`, `long long`, `double`, etc.
-- ⚡ **Alta Performance**: Complexidade O(log n) para consultas e atualizações
-- 🔧 **Operações Múltiplas**: Soma, Mínimo, Máximo, Maior divisor comum (com possibilidade de extensão)
-- 📚 **Código Educativo**: Bem comentado e estruturado para aprendizado
-- 🤝 **Colaborativo**: Desenvolvido em equipe para disciplina de Estruturas de Dados
+- **Template Genérico**: Funciona com `int`, `long long`, `double`, etc.
+- **Alta Performance**: Complexidade O(log n) para consultas e atualizações
+- **Operações Múltiplas**: Soma, Mínimo, Máximo, Maior divisor comum (com possibilidade de extensão)
+- **Código Educativo**: Bem comentado e estruturado para aprendizado
+- **Colaborativo**: Desenvolvido em equipe para disciplina de Estruturas de Dados
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
-### ✅ Implementado
+### Implementado
 - [x] Template genérico para qualquer tipo numérico
 - [x] Operação de **Soma** (Range Sum Query)
 - [x] Operação de **Mínimo** (Range Minimum Query)
@@ -25,10 +25,8 @@ Implementação robusta e genérica de **Árvore de Segmentos (Segment Tree)** e
 - [x] Construção da árvore O(n)
 - [x] Função `update()` - Atualização de elementos
 - [x] Função `query()` - Consultas por intervalo
-
-### 🔄 Em Desenvolvimento
-- [ ] Lazy Propagation (para atualizações em intervalo)
-- [ ] Testes unitários
+- [x] Lazy Propagation (para atualizações em intervalo)
+- [x] Testes unitários
 
 ## 📖 Como Usar
 
@@ -81,7 +79,7 @@ segTree<double> tree_double(arr_double, min);
 c++ -std=c++20 -o SegTree segTree_teste.cpp
 ```
 
-## 📊 Complexidade
+## Complexidade
 
 | Operação | Complexidade | Descrição |
 |----------|-------------|-----------|
@@ -112,11 +110,11 @@ $\forall k \ge 1,\quad 2k \ge k+1$
 $k+1 \le 2k < 2^{k+1}$  
 Como o logaritmo é a função inversa da exponenciação, $2N > \lfloor \log _{2}\left(N\right) \rfloor \quad \forall N \ge 1$
 
-## 📚 Referências
+## Referências
 
 - [Segment Tree - CP-Algorithms](https://cp-algorithms.com/data_structures/segment_tree.html)
 - [Introduction to Data Structures](https://www.geeksforgeeks.org/segment-tree-data-structure/)
 
 ---
 
-**🎓 Disciplina**: Estruturas de Dados | **🏫 Universidade**: Universidade Federal de Santa Maria (UFSM)
+**Disciplina**: Estruturas de Dados | **Universidade**: Universidade Federal de Santa Maria (UFSM)
