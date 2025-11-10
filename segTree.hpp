@@ -79,62 +79,6 @@ private:
         }
     }
 
-    void _update_assign(int node, int L, int R, int pos, T new_val) {
-        if (L == R) {
-            tree[node] = new_val;
-        }
-        else {
-            // PUSH antes de descer na árvore
-            push(node, L, R);
-
-            // Achar o elemento do meio para
-            // dividir o vetor em duas metades
-            int mid = (L + R) / 2;
-
-            // Precisa atualizar apenas a metade da árvore
-            // que vai ter algum valor modificado
-            if (pos <= mid) {
-                // Percorre recursivamente 
-                // a metade à esquerda
-                _update_assign(node*2, L, mid, pos, new_val);
-            }
-            else {
-                // Percorre recursivamente 
-                // a metade à direita
-                _update_assign(node*2+1, mid+1, R, pos, new_val);
-            }
-            tree[node] = operacao(tree[node*2], tree[node*2+1]);
-        }
-    }
-
-    void _update_add(int node, int L, int R, int pos, T val) {
-        if (L == R) {
-            tree[node] += val;
-        }
-        else {
-            //PUSH antes de descer na árvore
-            push(node, L, R);
-
-            // Achar o elemento do meio para
-            // dividir o vetor em duas metades
-            int mid = (L + R) / 2;
-
-            // Precisa atualizar apenas a metade da árvore
-            // que vai ter algum valor modificado
-            if (pos <= mid) {
-                // Percorre recursivamente 
-                // a metade à esquerda
-                _update_add(node*2, L, mid, pos, val);
-            }
-            else {
-                // Percorre recursivamente 
-                // a metade à direita
-                _update_add(node*2+1, mid+1, R, pos, val);
-            }
-            tree[node] = operacao(tree[node*2], tree[node*2+1]);
-        }
-    }
-
     T _query(int node, int L, int R, int l, int r)
     {
         //retorna valor padrão se for pra
@@ -286,24 +230,19 @@ public:
     }; //construtor da classe
 
     ~segTree() = default;
-
-    void assign(int pos, T value) {
-        _update_assign(1, 0, size-1, pos, value);
-    }; //atualiza a arvore trocando um dos valores por 'value'
-
-    void add(int pos, T value) {
-        _update_add(1, 0, size-1, pos, value);
-    }; //atualiza a arvore somando'value' a algum valor
     
+    //retorna a consulta entre left e right
     T query(int left, int right) {
         return _query(1, 0, size-1, left, right);
-    }; //retorna a consulta entre left e right
+    };
     
-    void rangeAdd(int left, int right, T value) {
+    //soma 'value' a todos os elementos no intervalo [left, right]
+    void add(int left, int right, T value) {
         _range_update_add(1, 0, size-1, left, right, value);
-    }; //soma 'value' a todos os elementos no intervalo [left, right]
+    };
     
-    void rangeAssign(int left, int right, T value) {
+    //atribui 'value' a todos os elementos no intervalo [left, right]
+    void assign(int left, int right, T value) {
         _range_update_assign(1, 0, size-1, left, right, value);
-    }; //atribui 'value' a todos os elementos no intervalo [left, right]
+    };
 };
